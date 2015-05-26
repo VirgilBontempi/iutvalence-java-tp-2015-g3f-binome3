@@ -1,5 +1,10 @@
 package ihm;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 public class Window {
 
@@ -12,7 +17,6 @@ public class Window {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JFrame window = new JFrame();
-		Panel panel = new Panel();
 				
 		/** Title. */
 		window.setTitle("Connect four");
@@ -23,8 +27,28 @@ public class Window {
 		/** Kill the process. */
 	    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
-	    window.add(panel);
+		JPanel highPanel = new JPanel();
+		highPanel.setLayout(new GridLayout(1,7));
+		highPanel.add(new JButton("1"));
+		highPanel.add(new JButton("2"));
+		highPanel.add(new JButton("3"));
+		highPanel.add(new JButton("4"));
+		highPanel.add(new JButton("5"));
+		highPanel.add(new JButton("6"));
+		highPanel.add(new JButton("7"));
+		
+		JPanel lowPanel = new LowPanel();
+		JSplitPane panel1;
+		
+		
+		
+		panel1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		panel1.setTopComponent(highPanel);
+		panel1.setBottomComponent(lowPanel);
 
+		window.add(panel1);
+		
+		
 	    /** Display the window. */
 	    window.setVisible(true);
 	    

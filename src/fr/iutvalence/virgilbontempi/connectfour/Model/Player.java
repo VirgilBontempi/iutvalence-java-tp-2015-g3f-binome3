@@ -1,4 +1,5 @@
-package fr.iutvalence.virgilbontempi.connectfour;
+package fr.iutvalence.virgilbontempi.connectfour.Model;
+
 
 /**
  * Player's settings.

@@ -1,4 +1,4 @@
-package fr.iutvalence.virgilbontempi.connectfour;
+package fr.iutvalence.virgilbontempi.connectfour.Model;
 
 import java.util.Objects;
 import java.util.Scanner;

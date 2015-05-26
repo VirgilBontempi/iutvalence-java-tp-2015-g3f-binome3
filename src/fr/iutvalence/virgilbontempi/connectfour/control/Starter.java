@@ -1,4 +1,6 @@
-package fr.iutvalence.virgilbontempi.connectfour;
+package fr.iutvalence.virgilbontempi.connectfour.control;
+
+import fr.iutvalence.virgilbontempi.connectfour.Model.Game;
 
 /**
  * @author bontempv
