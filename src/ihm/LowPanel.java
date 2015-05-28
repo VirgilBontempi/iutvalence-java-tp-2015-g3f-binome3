@@ -7,25 +7,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import fr.iutvalence.virgilbontempi.connectfour.Model.Grid;
+
 public class LowPanel extends JPanel{
 	
-	private static int NCOLUMN = 7;
-	private static int NLINE = 6;
-	
+		private int counterGridLine;
+		private int counterGridColumn;
+		
 		public LowPanel(){
 			
 			int counterCol;
 			int counterLi;
 			
-			this.setLayout(new GridLayout(NLINE, NCOLUMN));
+			this.setLayout(new GridLayout(Grid.NBLINE, Grid.NBCOLUMN));
 			
-			for(counterCol = 0; counterCol < NCOLUMN; counterCol++){
-				for(counterLi = 0; counterLi < NLINE; counterLi++){
-					add(new JButton(""));
-					
-				}
+			for(counterCol = 1; counterCol <= Grid.NBLINE*Grid.NBCOLUMN; counterCol++){
 				
-			}
-		}
+						add(new JButton(""));
+
+					}
+			}			
 }
+
 

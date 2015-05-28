@@ -15,7 +15,7 @@ public class Window {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		JFrame window = new JFrame();
 				
 		/** Title. */
@@ -27,6 +27,7 @@ public class Window {
 		/** Kill the process. */
 	    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
+	    /** Buttons */
 		JPanel highPanel = new JPanel();
 		highPanel.setLayout(new GridLayout(1,7));
 		highPanel.add(new JButton("1"));
@@ -37,15 +38,17 @@ public class Window {
 		highPanel.add(new JButton("6"));
 		highPanel.add(new JButton("7"));
 		
+		/** SplitPanel1 */
 		JPanel lowPanel = new LowPanel();
 		JSplitPane panel1;
 		
 		
-		
+		/** Vertical split of panels */
 		panel1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		panel1.setTopComponent(highPanel);
 		panel1.setBottomComponent(lowPanel);
-
+		
+		/** Add of panel */
 		window.add(panel1);
 		
 		

@@ -40,9 +40,21 @@ public class Game {
 	/** Attribute named "grid" type "Grid". */
 	private final Grid grid;
 
+	public Grid getGrid() {
+		return grid;
+	}
+
 	/** Attribute named "currentPlayer" type "Player". */
 	private Player currentPlayer;
 
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+	
 	/**
 	 * Create a new game for the two given players.
 	 * 
@@ -53,18 +65,19 @@ public class Game {
 		player1 = new Player(name1, Piece.RED);
 		player2 = new Player(name2, Piece.YELLOW);
 		grid = new Grid();
-		currentPlayer = player1;
+		setCurrentPlayer(player1);
 	}
 
 	/** Switch of player. */
 	private void switchPlayer() {
-		currentPlayer = (Objects.equals(currentPlayer, player1)) ? player2
-				: player1;
+		setCurrentPlayer((Objects.equals(getCurrentPlayer(), player1)) ? player2
+				: player1);
 	}
 
 	/** Starter function. */
 	public void start() {
-		System.out.println(grid);
+		
+		user.displayGrid();
 
 		while (!grid.win() && !grid.areAllColumnFull()) {
 			playARound();
@@ -73,11 +86,13 @@ public class Game {
 
 		if (grid.win()) {
 			switchPlayer();
-			System.out.println(currentPlayer + ", you won ! Congratulations !");
+			user.displayWin();;
 		} else {
-			System.out.println("Nobody has won");
+			user.displayEguality();
 		}
 	}
+	
+	private User user;
 
 	/**
 	 * Play a round.
@@ -86,15 +101,15 @@ public class Game {
 	 */
 	private void playARound() {
 		try {
-			System.out.format("%s's round ! ", currentPlayer);
+			user.displayCurrentPlayer(currentPlayer);
 			int choosenColumn = inputColumn();
-			grid.placementPiece(choosenColumn, currentPlayer.getPiece());
-			System.out.println(grid);
+			grid.placementPiece(choosenColumn, getCurrentPlayer().getPiece());
+			user.displayGrid();;
 		} catch (OutOfRangeException ignore) {
-			System.err.println("Insert an other column, the selected column is out of range !");
+			user.displayErrOutOfRange();;
 			playARound();
 		} catch (FullColumnException ignore) {
-			System.err.println("Insert an other column, the selected column is full !");
+			user.displayErrColumnFull();
 			playARound();
 		}
 	}
@@ -107,9 +122,9 @@ public class Game {
 	 * @throws FullColumnException
 	 */
 	public int inputColumn() throws OutOfRangeException, FullColumnException {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Insert a column ranged between 0 and 6 !");
-		int column = scanner.nextInt();
+		Scanner scanner = user.displayScanner();
+		user.displayColumnRange();
+		int column = user.displayNextInt(scanner);
 		if ((column < 0) || (column >= Grid.NBCOLUMN)) {
 			throw new OutOfRangeException();
 		}
@@ -118,5 +133,6 @@ public class Game {
 		}
 		return column;
 	}
+
 
 }

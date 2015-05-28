@@ -17,6 +17,8 @@ public class Grid {
 	public static final int NBCOLUMN = 7;
 	/** Attribute "grill" type "Piece", a tableau with two dimensions. */
 	private final Piece[][] grill;
+	
+	private User user;
 
 	/** Create a new empty grid. */
 	public Grid() {
